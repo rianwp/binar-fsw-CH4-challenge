@@ -1,18 +1,18 @@
 const express = require("express")
-const carsController = require("../controllers/carsController")
+const adminController = require("../controllers/carsController")
 
 const router = express.Router()
 
-router.route("/").get(carsController.carsPage)
+router.route("/").get(adminController.carsPage)
 
-router.route("/create").get(carsController.createPage)
+router.route("/create").get(adminController.createPage)
 
-router.route("/edit/:id").get(carsController.editPage)
+router.route("/edit/:id").get(adminController.editPage)
 
-router.route("/cars/create").post(carsController.createCar)
+router.route("/cars/action/create").post(adminController.createCar)
 
-router.route("/cars/delete/:id").get(carsController.deleteCar)
+router.route("/cars/action/delete/:id").get(adminController.deleteCar)
 
-router.route("/cars/edit/:id").post(carsController.editCar)
+router.route("/cars/action/edit/:id").post(adminController.editCar)
 
 module.exports = router
