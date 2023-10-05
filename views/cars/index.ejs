@@ -106,7 +106,7 @@
                             
 
                             <div class="d-flex button__group">
-                                <input name="category" class="visually-hidden" checked type="radio" value="<%= category %>" >
+                                <input name="category" type="hidden" value="<%= category %>" >
                                 <a href="/" class="btn button__secondary <%= (category === '' || !category ? 'active' : '') %> me-3">All</a>
                                 <a href="?category=small" class="btn button__secondary <%= (category === 'small' ? 'active' : '') %> me-3">Small</a>
                                 <a href="?category=medium" class="btn button__secondary <%= (category === 'medium' ? 'active' : '') %>  me-3">Medium</a>
