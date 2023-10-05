@@ -104,27 +104,13 @@
                                 <a class="btn btn__primary" href="/create"> <img src="images/fi_plus.png" alt=""> Add New Car</a>
                             </div>
                             
-                            <!-- Tombol search sendiri harus ditekan untuk memunculkan hasil filter -->
-                            <div class="d-flex button__group" >
-                                <div class="radio__button">
-                                    <input type="radio" id="all" name="category" value="" <%= (category === '' || !category ? 'checked' : '') %>/>
-                                    <label class="btn button__secondary me-3" for="all">All</label>
-                                </div>
-                                <div class="radio__button">
-                                    <input type="radio" id="small" name="category" value="small" <%= (category === 'small' ? 'checked' : '') %>/>
-                                    <label class="btn button__secondary me-3" for="small">Small</label>
-                                </div>
-                                <div class="radio__button">
-                                    <input type="radio" id="medium" name="category" value="medium" <%= (category === 'medium' ? 'checked' : '') %>/>
-                                    <label class="btn button__secondary me-3" for="medium">Medium</label>
-                                </div>
-                                <div class="radio__button">
-                                    <input type="radio" id="large" name="category" value="large" <%= (category === 'large' ? 'checked' : '') %>/>
-                                    <label class="btn button__secondary me-3" for="large">Large</label>
-                                </div>
-                                <div id="search-button">
-                                  
-                                </div>
+
+                            <div class="d-flex button__group">
+                                <input name="category" class="visually-hidden" checked type="radio" value="<%= category %>" >
+                                <a href="/" class="btn button__secondary <%= (category === '' || !category ? 'active' : '') %> me-3">All</a>
+                                <a href="?category=small" class="btn button__secondary <%= (category === 'small' ? 'active' : '') %> me-3">Small</a>
+                                <a href="?category=medium" class="btn button__secondary <%= (category === 'medium' ? 'active' : '') %>  me-3">Medium</a>
+                                <a href="?category=large" class="btn button__secondary <%= (category === 'large' ? 'active' : '') %>  me-3">Large</a>
                             </div>
                             
                             <div class="row mt-4">
@@ -189,12 +175,5 @@
                 const id = modal.getAttribute('data-id')
             })
         })
-        const categoryButton = document.getElementsByName('category')
-        const searchButton = document.getElementById('search-button')
-        for(let i = 0; i < categoryButton.length; i++) {
-          categoryButton[i].addEventListener("click", function(){
-            searchButton.innerHTML = `<button class="btn btn-outline-success" type="submit">Search</button>`
-          })
-        }
     </script>
     <%- include('../layouts/script') -%>
