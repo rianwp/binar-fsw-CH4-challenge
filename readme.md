@@ -36,5 +36,5 @@ npm run dev
 | `/create`                 | `GET`  | Page untuk menambahkan data car                                    |
 | `/edit/:id`               | `GET`  | Page untuk mengedit data car dengan id tertentu                    |
 | `/cars/action/create`     | `POST` | Endpoint untuk melakukan action create data car                    |
-| `/cars/action/delete/:id` | `POST` | Endpoint untuk melakukan action delete data car dengan id tertentu |
+| `/cars/action/delete/:id` | `GET`  | Endpoint untuk melakukan action delete data car dengan id tertentu |
 | `/cars/action/edit/:id`   | `POST` | Endpoint untuk melakukan action edit data car dengan id tertentu   |

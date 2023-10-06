@@ -11,7 +11,7 @@ router.route("/edit/:id").get(adminController.editPage)
 
 router.route("/cars/action/create").post(adminController.createCar)
 
-router.route("/cars/action/delete/:id").post(adminController.deleteCar)
+router.route("/cars/action/delete/:id").get(adminController.deleteCar)
 
 router.route("/cars/action/edit/:id").post(adminController.editCar)
 
