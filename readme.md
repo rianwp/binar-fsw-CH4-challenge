@@ -30,11 +30,11 @@ npm run dev
 
 ## Routes
 
-| Route                     | Method | Description                                                        |
-| ------------------------- | ------ | ------------------------------------------------------------------ |
-| `/`                       | `GET`  | Page untuk menampilkan list cars                                   |
-| `/create`                 | `GET`  | Page untuk menambahkan data car                                    |
-| `/edit/:id`               | `GET`  | Page untuk mengedit data car dengan id tertentu                    |
-| `/cars/action/create`     | `POST` | Endpoint untuk melakukan action create data car                    |
-| `/cars/action/delete/:id` | `GET`  | Endpoint untuk melakukan action delete data car dengan id tertentu |
-| `/cars/action/edit/:id`   | `POST` | Endpoint untuk melakukan action edit data car dengan id tertentu   |
+| Route                     | Method | Description                                                 |
+| ------------------------- | ------ | ----------------------------------------------------------- |
+| `/`                       | `GET`  | Page untuk menampilkan list cars                            |
+| `/create`                 | `GET`  | Page untuk menambahkan data car baru                        |
+| `/edit/:id`               | `GET`  | Page untuk mengedit data car dengan id tertentu             |
+| `/cars/action/create`     | `POST` | Endpoint action untuk menambahkan data car baru             |
+| `/cars/action/delete/:id` | `GET`  | Endpoint action untuk menghapus data car dengan id tertentu |
+| `/cars/action/edit/:id`   | `POST` | Endpoint action untuk mengedit data car dengan id tertentu  |
