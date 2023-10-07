@@ -80,6 +80,11 @@ const editCar = async (req, res) => {
 	const { name, price, category } = req.body
 	const file = req.file
 	const id = req.params.id
+	const updateBody = {
+		name,
+		price,
+		category,
+	}
 	try {
 		if (file) {
 			const split = file.originalname.split(".")
@@ -89,32 +94,11 @@ const editCar = async (req, res) => {
 				file: file.buffer,
 				fileName: `IMG-${Date.now()}.${extension}`,
 			})
-			await Car.findByIdAndUpdate(
-				id,
-				{
-					name,
-					price,
-					category,
-					image: img.url,
-				},
-				{
-					new: true,
-				}
-			)
-		} else {
-			await Car.findByIdAndUpdate(
-				id,
-				{
-					name,
-					price,
-					category,
-				},
-				{
-					new: true,
-				}
-			)
+			updateBody.image = img.url
 		}
-
+		await Car.findByIdAndUpdate(id, updateBody, {
+			new: true,
+		})
 		req.flash("message", "Diupdate")
 		res.redirect("/")
 	} catch (err) {
