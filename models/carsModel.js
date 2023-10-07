@@ -29,7 +29,8 @@ const carSchema = new mongoose.Schema(
 		},
 		image: {
 			type: String,
-			default: "",
+			default:
+				"https://tse2.mm.bing.net/th?id=OIP.U2iQ7wNK6ZzTW_traW_-PQHaHa&pid=Api&P=0&h=180",
 		},
 	},
 	{

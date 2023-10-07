@@ -1,4 +1,5 @@
 const Car = require("../models/carsModel")
+const imagekit = require("../lib/imagekit")
 
 const carsPage = async (req, res) => {
 	try {
@@ -34,8 +35,22 @@ const createPage = async (req, res) => {
 }
 
 const createCar = async (req, res) => {
+	const { name, price, category } = req.body
+	const file = req.file
 	try {
-		await Car.create(req.body)
+		const split = file.originalname.split(".")
+		const extension = split[split.length - 1]
+
+		const img = await imagekit.upload({
+			file: file.buffer,
+			fileName: `IMG-${Date.now()}.${extension}`,
+		})
+		await Car.create({
+			name,
+			price,
+			category,
+			image: img.url,
+		})
 		req.flash("message", "Ditambah")
 		res.redirect("/")
 	} catch (err) {
@@ -62,11 +77,44 @@ const editPage = async (req, res) => {
 }
 
 const editCar = async (req, res) => {
+	const { name, price, category } = req.body
+	const file = req.file
+	const id = req.params.id
 	try {
-		const id = req.params.id
-		await Car.findByIdAndUpdate(id, req.body, {
-			new: true,
-		})
+		if (file) {
+			const split = file.originalname.split(".")
+			const extension = split[split.length - 1]
+
+			const img = await imagekit.upload({
+				file: file.buffer,
+				fileName: `IMG-${Date.now()}.${extension}`,
+			})
+			await Car.findByIdAndUpdate(
+				id,
+				{
+					name,
+					price,
+					category,
+					image: img.url,
+				},
+				{
+					new: true,
+				}
+			)
+		} else {
+			await Car.findByIdAndUpdate(
+				id,
+				{
+					name,
+					price,
+					category,
+				},
+				{
+					new: true,
+				}
+			)
+		}
+
 		req.flash("message", "Diupdate")
 		res.redirect("/")
 	} catch (err) {
